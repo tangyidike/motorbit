@@ -114,7 +114,7 @@ function i2cread(addr: number, reg: number) {
 
 function initPCA9685(): void {
     i2cwrite(PCA9685_ADDRESS, MODE1, 0x00)
-    setFreq(50);
+    setFreq(125);
     for (let idx = 0; idx < 16; idx++) {
         setPwm(idx, 0, 0);
     }
@@ -372,13 +372,13 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
     basic.pause(delay * 1000);
     if (speed >= 0) {
         setPwm(pp, 0, 0)
-        setPwm(pn, 0, 4095)
+        setPwm(pn, 0, 512)
     } else {
-        setPwm(pp, 0, 4095)
+        setPwm(pp, 0, 512)
         setPwm(pn, 0, 0)
     }
-    basic.pause(16);
-    MotorRun(index, 0);
+    //basic.pause(16);
+    //MotorRun(index, 0);
 }
     
 //% blockId=motorbit_motor_run block="Motor|%index|speed %speed"
