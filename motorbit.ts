@@ -377,7 +377,7 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
         setPwm(pp, 0, 4095)
         setPwm(pn, 0, 0)
     }
-    basic.pause(32);
+    basic.pause(40);
     MotorRun(index, 0);
 }
     
