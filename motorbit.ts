@@ -370,13 +370,14 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
         setPwm(pn, 0, -speed)
     }
     basic.pause(delay * 1000);
-    setPwm(pp, 0, 4095)
-    setPwm(pn, 0, 4095)
-    basic.pause(8);
-    MotorRun(index, 0);
-    setPwm(pp, 0, 4095)
-    setPwm(pn, 0, 4095)
-    basic.pause(8);
+    if (speed >= 0) {
+        setPwm(pp, 0, 0)
+        setPwm(pn, 0, 4095)
+    } else {
+        setPwm(pp, 0, 4095)
+        setPwm(pn, 0, 0)
+    }
+    basic.pause(16);
     MotorRun(index, 0);
 }
     
