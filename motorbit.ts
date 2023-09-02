@@ -372,9 +372,9 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
     basic.pause(delay * 1000);
     if (speed >= 0) {
         setPwm(pp, 0, 0)
-        setPwm(pn, 0, 512)
+        setPwm(pn, 0, 4095)
     } else {
-        setPwm(pp, 0, 512)
+        setPwm(pp, 0, 4095)
         setPwm(pn, 0, 0)
     }
     basic.pause(32);
