@@ -343,7 +343,7 @@ export function MotorStop(index: Motors): void {
     MotorRun(index, 0);
 }
 
-//% blockId=motorbit_motor_run block="Motor|%index|speed %speed"
+//% blockId=motorbit_motor_run_ev block="EV3马达|%index|速度 %speed|延时 %delay|s"
 //% weight=86
 //% speed.min=-255 speed.max=255
 //% name.fieldEditor="gridpicker" name.fieldOptions.columns=4
