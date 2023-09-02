@@ -374,6 +374,10 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
     setPwm(pn, 0, 4095)
     basic.pause(8);
     MotorRun(index, 0);
+    setPwm(pp, 0, 4095)
+    setPwm(pn, 0, 4095)
+    basic.pause(8);
+    MotorRun(index, 0);
 }
     
 //% blockId=motorbit_motor_run block="Motor|%index|speed %speed"
