@@ -1,7 +1,7 @@
 {
     "name": "motorbit",
     "version": "1.0.3",
-    "description": "motorbit emakefun v3",
+    "description": "motorbit emakefun v4",
     "dependencies": {
         "core": "*",
         "irRemote": "github:emakefun/pxt-irRemote",
