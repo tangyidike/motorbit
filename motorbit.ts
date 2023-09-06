@@ -405,6 +405,7 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
         }
         p1 = pins.digitalReadPin(DigitalPin.P1);
         p2 = pins.digitalReadPin(DigitalPin.P8);
+        basic.pause(1);
     }
     //basic.pause(delay * 1000);
     if (speed >= 0) {
