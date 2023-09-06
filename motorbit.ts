@@ -351,6 +351,9 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
     if (!initialized) {
         initPCA9685()
     }
+    let p1 = pins.digitalReadPin(DigitalPin.P1);
+    let p2 = pins.digitalReadPin(DigitalPin.P8);
+    let postion = 0;
     speed = speed * 16; // map 255 to 4096
     if (speed >= 4096) {
         speed = 4095
@@ -369,7 +372,39 @@ export function MotorRunEv(index: Motors, speed: number, delay: number): void {
         setPwm(pp, 0, 0)
         setPwm(pn, 0, -speed)
     }
-    basic.pause(delay * 1000);
+    while (postion>-7200 || postion<7200) {
+        if (p1 != pins.digitalReadPin(DigitalPin.P1)) {
+            if (p1 == 1) {
+                if (pins.digitalReadPin(DigitalPin.P8) == 0) {
+                    postion++;
+                } else {
+                    postion--;
+                }
+            } else {
+                if (pins.digitalReadPin(DigitalPin.P8) == 1) {
+                    postion++;
+                } else {
+                    postion--;
+                }
+            }
+        }
+        if (p2 != pins.digitalReadPin(DigitalPin.P8)) {
+            if (p2 == 1) {
+                if (pins.digitalReadPin(DigitalPin.P1) == 1) {
+                    postion++;
+                } else {
+                    postion--;
+                }
+            } else {
+                if (pins.digitalReadPin(DigitalPin.P1) == 0) {
+                    postion++;
+                } else {
+                    postion--;
+                }
+            }
+        }
+    }
+    //basic.pause(delay * 1000);
     if (speed >= 0) {
         setPwm(pp, 0, 0)
         setPwm(pn, 0, 4095)
